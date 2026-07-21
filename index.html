@@ -1,152 +1,311 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Guide des meilleures pratiques de codage avec l'IA - 5 skills essentiels pour Claude Code, Cursor, Codex et tous les agents IA.">
-<meta name="author" content="Angelo Lock To Hang">
-<meta property="og:title" content="AI Coding Skills Guide">
-<meta property="og:description" content="5 skills essentiels pour coder avec l'IA: Grill me, APEX, Impeccable, Make Interface Feel Better, Thermo-Nuclear Review.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://angelolockdev.github.io/ai-coding-skills-guide/">
-<title>AI Coding Skills Guide - 5 skills essentiels pour coder avec l'IA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
---bg:#050505;--surface:#0a0a0a;--border:rgba(255,255,255,.08);--border-hover:rgba(255,255,255,.14);
---text:#fafafa;--text-dim:#a1a1a1;--text-dimmer:#525252;
---accent:#10b981;--accent-glow:rgba(16,185,129,.15);--accent-soft:rgba(16,185,129,.06);
---purple:#a78bfa;--purple-glow:rgba(167,139,250,.12);
---orange:#fb923c;--orange-glow:rgba(251,146,60,.12);
---blue:#60a5fa;--blue-glow:rgba(96,165,250,.12);
---red:#f87171;--red-glow:rgba(248,113,113,.12);
---radius:1.5rem;--radius-sm:1rem;
---font-display:'Plus Jakarta Sans',sans-serif;--font-mono:'JetBrains Mono',monospace;
---ease:cubic-bezier(.32,.72,0,1);
-}
-html{scroll-behavior:smooth}
-body{
-font-family:var(--font-display);background:var(--bg);color:var(--text);
-line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
-}
-/* Noise overlay */
-body::before{
-content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
-background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-}
-/* Radial mesh background */
-body::after{
-content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-background:
-radial-gradient(ellipse 80% 50% at 20% 0%,var(--accent-glow),transparent 50%),
-radial-gradient(ellipse 60% 40% at 80% 10%,var(--purple-glow),transparent 50%),
-radial-gradient(ellipse 70% 50% at 50% 100%,var(--blue-glow),transparent 50%);
-}
-.wrap{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 1.5rem}
-
-/* NAV */
-nav{
-position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:100;
-display:flex;align-items:center;gap:2rem;
-background:rgba(10,10,10,.6);backdrop-filter:blur(24px) saturate(180%);
--webkit-backdrop-filter:blur(24px) saturate(180%);
-border:1px solid var(--border);border-radius:999px;padding:.6rem 1.5rem;
+/* SKILLS BENTO */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+@media(max-width:1024px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.skills-grid{grid-template-columns:1fr}}
+.skill-card{
+position:relative;background:var(--surface);border:1px solid var(--border);
+border-radius:var(--radius);padding:2rem;overflow:hidden;
 transition:all .6s var(--ease);
 }
-nav .brand{font-weight:700;font-size:.875rem;letter-spacing:-.02em;white-space:nowrap}
-nav .brand span{color:var(--accent)}
-nav .links{display:flex;gap:1.5rem}
-nav .links a{color:var(--text-dim);text-decoration:none;font-size:.8125rem;font-weight:500;
-transition:color .3s var(--ease)}
-nav .links a:hover{color:var(--text)}
-nav .gh-link{
-display:inline-flex;align-items:center;gap:.5rem;
-background:rgba(255,255,255,.05);border:1px solid var(--border);
-border-radius:999px;padding:.4rem .9rem;font-size:.8125rem;font-weight:500;
-color:var(--text);text-decoration:none;transition:all .4s var(--ease);
+.skill-card:hover{border-color:var(--border-hover);transform:translateY(-2px)}
+.skill-card::before{
+content:'';position:absolute;inset:0;opacity:0;transition:opacity .6s var(--ease);
 }
-nav .gh-link:hover{background:rgba(255,255,255,.1);border-color:var(--border-hover)}
-@media(max-width:768px){
-nav{gap:1rem;padding:.5rem 1rem}
-nav .links{display:none}
+.skill-card[data-color=green]::before{background:radial-gradient(circle at 50% 0%,var(--accent-glow),transparent 70%)}
+.skill-card[data-color=purple]::before{background:radial-gradient(circle at 50% 0%,var(--purple-glow),transparent 70%)}
+.skill-card[data-color=orange]::before{background:radial-gradient(circle at 50% 0%,var(--orange-glow),transparent 70%)}
+.skill-card[data-color=blue]::before{background:radial-gradient(circle at 50% 0%,var(--blue-glow),transparent 70%)}
+.skill-card[data-color=red]::before{background:radial-gradient(circle at 50% 0%,var(--red-glow),transparent 70%)}
+.skill-card:hover::before{opacity:1}
+.skill-card__num{font-family:var(--font-mono);font-size:.75rem;color:var(--text-dimmer);margin-bottom:1rem}
+.skill-card__icon{
+width:2.5rem;height:2.5rem;border-radius:.75rem;display:flex;
+align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1.5rem;
 }
+.skill-card[data-color=green] .skill-card__icon{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(16,185,129,.2)}
+.skill-card[data-color=purple] .skill-card__icon{background:var(--purple-glow);color:var(--purple);border:1px solid rgba(167,139,250,.2)}
+.skill-card[data-color=orange] .skill-card__icon{background:var(--orange-glow);color:var(--orange);border:1px solid rgba(251,146,60,.2)}
+.skill-card[data-color=blue] .skill-card__icon{background:var(--blue-glow);color:var(--blue);border:1px solid rgba(96,165,250,.2)}
+.skill-card[data-color=red] .skill-card__icon{background:var(--red-glow);color:var(--red);border:1px solid rgba(248,113,113,.2)}
+.skill-card h3{font-size:1.25rem;font-weight:700;margin-bottom:.75rem;letter-spacing:-.02em;position:relative}
+.skill-card p{color:var(--text-dim);font-size:.875rem;line-height:1.65;margin-bottom:1.25rem;position:relative}
+.skill-card__tags{display:flex;flex-wrap:wrap;gap:.375rem;position:relative}
+.skill-card__tag{font-family:var(--font-mono);font-size:.6875rem;padding:.25rem .625rem;
+border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-dim)}
+.skill-card__install{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);position:relative}
+.skill-card__install code{font-family:var(--font-mono);font-size:.75rem;color:var(--accent);
+word-break:break-all;display:block;line-height:1.5}
 
-/* HERO */
-.hero{min-height:100dvh;display:flex;align-items:center;padding:8rem 0 6rem}
-.hero__inner{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;width:100%}
-.hero__copy{max-width:680px}
-.eyebrow{
-display:inline-flex;align-items:center;gap:.5rem;
-background:var(--accent-soft);border:1px solid rgba(16,185,129,.2);
-border-radius:999px;padding:.375rem .875rem;
-font-size:.6875rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
-color:var(--accent);margin-bottom:2rem;
-}
-.hero h1{
-font-size:clamp(2.5rem,7vw,5rem);font-weight:800;line-height:.95;
-letter-spacing:-.04em;margin-bottom:1.5rem;
-}
-.hero h1 .grad{
-background:linear-gradient(135deg,var(--accent) 0%,var(--purple) 50%,var(--blue) 100%);
--webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-}
-.hero__lede{font-size:1.0625rem;color:var(--text-dim);max-width:560px;margin-bottom:2.5rem;line-height:1.7}
-.hero__actions{display:flex;gap:1rem;flex-wrap:wrap}
-.btn{
-display:inline-flex;align-items:center;gap:.625rem;text-decoration:none;
-font-weight:600;font-size:.875rem;border-radius:999px;padding:.875rem 1.5rem;
-transition:all .5s var(--ease);cursor:pointer;border:none;
-}
-.btn--primary{background:var(--accent);color:var(--bg)}
-.btn--primary:hover{background:#34d399;transform:scale(.98)}
-.btn--ghost{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text)}
-.btn--ghost:hover{background:rgba(255,255,255,.08);border-color:var(--border-hover)}
-.btn .arrow{
-display:inline-flex;align-items:center;justify-content:center;
-width:1.5rem;height:1.5rem;border-radius:999px;
-background:rgba(0,0,0,.1);transition:transform .4s var(--ease);
-}
-.btn--primary .arrow{background:rgba(0,0,0,.15)}
-.btn--ghost .arrow{background:rgba(255,255,255,.08)}
-.btn:hover .arrow{transform:translate(2px,-1px) scale(1.05)}
-
-.hero__badge{
-display:flex;flex-direction:column;align-items:flex-end;gap:1.5rem;
-}
-.hero__badge-card{
-background:rgba(255,255,255,.03);border:1px solid var(--border);
-border-radius:var(--radius-sm);padding:1.5rem;backdrop-filter:blur(12px);
-min-width:200px;
-}
-.hero__badge-card .label{font-size:.6875rem;color:var(--text-dimmer);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
-.hero__badge-card .value{font-size:2rem;font-weight:700;letter-spacing:-.03em}
-.hero__badge-card .value span{font-size:.875rem;color:var(--text-dim);font-weight:400}
-@media(max-width:768px){
-.hero__inner{grid-template-columns:1fr}
-.hero__badge{display:none}
-}
-
-/* SECTION HEADER */
-.section{padding:6rem 0}
-.section__head{text-align:center;margin-bottom:4rem}
-.section__tag{
-display:inline-block;font-size:.6875rem;font-weight:600;
-letter-spacing:.2em;text-transform:uppercase;color:var(--text-dimmer);
-margin-bottom:1rem;
-}
-.section__title{font-size:clamp(1.875rem,4vw,2.75rem);font-weight:700;letter-spacing:-.03em;margin-bottom:1rem}
-.section__sub{color:var(--text-dim);max-width:560px;margin:0 auto}
-
-/* WORKFLOW BAR */
-.workflow{
-display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap;
-margin-bottom:4rem;padding:1rem 1.5rem;
+/* INSTALL SECTION */
+.install-block{
 background:rgba(255,255,255,.02);border:1px solid var(--border);
-border-radius:999px;max-width:fit-content;margin-left:auto;margin-right:auto;
+border-radius:var(--radius);padding:2.5rem;margin-top:2rem;
 }
-.workflow__step{font-size:.75rem;font-weight:600;letter-spacing:.08em;color:var(--text-dim);text-transform:uppercase}
-.workflow__step.active{color:var(--accent)}
-.workflow__sep{color:var(--text-dimmer);font-size:.75rem}
+.install-block h3{font-size:1.125rem;font-weight:600;margin-bottom:1.5rem}
+.install-steps{display:flex;flex-direction:column;gap:1rem}
+.install-step{display:flex;align-items:flex-start;gap:1rem}
+.install-step__num{
+flex-shrink:0;width:1.75rem;height:1.75rem;border-radius:999px;
+background:var(--accent-soft);border:1px solid rgba(16,185,129,.2);
+display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);
+font-size:.75rem;font-weight:600;color:var(--accent);
+}
+.install-step code{font-family:var(--font-mono);font-size:.8125rem;color:var(--text);background:rgba(255,255,255,.04);padding:.125rem .375rem;border-radius:.375rem;display:inline-block}
+.install-step__label{font-size:.875rem;color:var(--text-dim);margin-top:.25rem}
+
+/* FOOTER */
+footer{padding:4rem 0 2rem;border-top:1px solid var(--border);margin-top:4rem}
+.footer__inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer__copy{font-size:.8125rem;color:var(--text-dimmer)}
+.footer__links{display:flex;gap:1.5rem}
+.footer__links a{font-size:.8125rem;color:var(--text-dim);text-decoration:none;transition:color .3s var(--ease)}
+.footer__links a:hover{color:var(--text)}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(2rem);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(prefers-reduced-motion:reduce){
+*{animation:none!important;transition:none!important}
+.fade-up{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<nav>
+<div class="brand">AI Skills <span>/</span> Guide</div>
+<div class="links">
+<a href="#workflow">Workflow</a>
+<a href="#skills">Skills</a>
+<a href="#install">Installation</a>
+<a href="https://github.com/angelolockdev/ai-coding-skills-guide">Repo</a>
+</div>
+<a class="gh-link" href="https://github.com/angelolockdev/ai-coding-skills-guide">GitHub</a>
+</nav>
+
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero" id="top">
+<div class="hero__inner">
+<div class="hero__copy">
+<span class="eyebrow">01 / Guide / 2026</span>
+<h1>5 skills pour <span class="grad">coder avec l'IA</span> sans perdre le controle</h1>
+<p class="hero__lede">Un workflow complet: clarifier le besoin, construire avec preuves, designer sans slop, polir les details et auditer avant livraison. Compatible avec Claude Code, Cursor, Codex, Hermes Agent et 20+ agents.</p>
+<div class="hero__actions">
+<a class="btn btn--primary" href="#skills">Voir les 5 skills <span class="arrow">&#8599;</span></a>
+<a class="btn btn--ghost" href="#install">Installation rapide <span class="arrow">&#8594;</span></a>
+</div>
+</div>
+<div class="hero__badge">
+<div class="hero__badge-card">
+<div class="label">Workflow</div>
+<div class="value">7 <span>etapes</span></div>
+</div>
+<div class="hero__badge-card">
+<div class="label">Skills</div>
+<div class="value">5 <span>essentiels</span></div>
+</div>
+<div class="hero__badge-card">
+<div class="label">Agents compatibles</div>
+<div class="value">20<span>+</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WORKFLOW BAR -->
+<section class="section" id="workflow">
+<div class="section__head">
+<span class="section__tag">Le workflow</span>
+<h2 class="section__title">Une seule ligne a retenir</h2>
+<p class="section__sub">Chaque etape produit un livrable verifiable qui alimente la suivante.</p>
+</div>
+<div class="workflow">
+<span class="workflow__step active">Clarifier</span>
+<span class="workflow__sep">&#8594;</span>
+<span class="workflow__step active">Specifier</span>
+<span class="workflow__sep">&#8594;</span>
+<span class="workflow__step active">Construire</span>
+<span class="workflow__sep">&#8594;</span>
+<span class="workflow__step active">Prouver</span>
+<span class="workflow__sep">&#8594;</span>
+<span class="workflow__step active">Designer</span>
+<span class="workflow__sep">&#8594;</span>
+<span class="workflow__step active">Polir</span>
+<span class="workflow__sep">&#8594;</span>
+<span class="workflow__step active">Auditer</span>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+<div class="section__head">
+<span class="section__tag">Les 5 skills</span>
+<h2 class="section__title">Chaque skill a un role precis</h2>
+<p class="section__sub">Ne demandez pas a l'agent de tout faire d'un coup. Donnez-lui un role, une procedure et des criteres verifiables.</p>
+</div>
+
+<div class="skills-grid">
+<!-- 1. Grill me -->
+<article class="skill-card fade-up" data-color="green">
+<div class="skill-card__num">01</div>
+<div class="skill-card__icon">&#128293;</div>
+<h3>Grill me</h3>
+<p>Interroge l'utilisateur sans relache sur un plan ou un design avant de coder. Elimine les ambiguites produit pour viser le one-shot.</p>
+<div class="skill-card__tags">
+<span class="skill-card__tag">Clarifier</span>
+<span class="skill-card__tag">Spec</span>
+<span class="skill-card__tag">Acceptance</span>
+</div>
+<div class="skill-card__install">
+<code>npx skills@latest add mattpocock/skills --skill grill-me</code>
+</div>
+</article>
+
+<!-- 2. APEX -->
+<article class="skill-card fade-up" data-color="purple">
+<div class="skill-card__num">02</div>
+<div class="skill-card__icon">&#9881;</div>
+<h3>APEX</h3>
+<p>Analyze, Plan, Execute, Examine. L'agent teste son propre code et fournit des screenshots comme preuve de fonctionnement.</p>
+<div class="skill-card__tags">
+<span class="skill-card__tag">Implementer</span>
+<span class="skill-card__tag">Tester</span>
+<span class="skill-card__tag">Screenshot</span>
+</div>
+<div class="skill-card__install">
+<code>npx skills@latest add melvynx/aiblueprint --skill apex</code>
+</div>
+</article>
+
+<!-- 3. Impeccable -->
+<article class="skill-card fade-up" data-color="orange">
+<div class="skill-card__num">03</div>
+<div class="skill-card__icon">&#127912;</div>
+<h3>Impeccable</h3>
+<p>Corrige le slop visuel: typographie, contraste, responsive, espacements. 23 sous-skills qui rendent le design intentionnel.</p>
+<div class="skill-card__tags">
+<span class="skill-card__tag">Design</span>
+<span class="skill-card__tag">Responsive</span>
+<span class="skill-card__tag">No-slop</span>
+</div>
+<div class="skill-card__install">
+<code>npx impeccable install</code>
+</div>
+</article>
+
+<!-- 4. Make Interface Feel Better -->
+<article class="skill-card fade-up" data-color="blue">
+<div class="skill-card__num">04</div>
+<div class="skill-card__icon">&#10024;</div>
+<h3>Make Interface Feel Better</h3>
+<p>Polir les details d'une interface deja fonctionnelle: alignements optiques, transitions, bordures, stabilite des nombres.</p>
+<div class="skill-card__tags">
+<span class="skill-card__tag">Polish</span>
+<span class="skill-card__tag">Micro-UX</span>
+<span class="skill-card__tag">Details</span>
+</div>
+<div class="skill-card__install">
+<code>npx skills add jakubkrehel/make-interfaces-feel-better</code>
+</div>
+</article>
+
+<!-- 5. Thermo-Nuclear -->
+<article class="skill-card fade-up" data-color="red">
+<div class="skill-card__num">05</div>
+<div class="skill-card__icon">&#9762;</div>
+<h3>Thermo-Nuclear Review</h3>
+<p>Audit sans pitie de la maintenabilite: code spaghetti, abstractions magiques, tests manquants, dette technique et architecture fragile.</p>
+<div class="skill-card__tags">
+<span class="skill-card__tag">Audit</span>
+<span class="skill-card__tag">Dette</span>
+<span class="skill-card__tag">Qualite</span>
+</div>
+<div class="skill-card__install">
+<code>npx skills add https://github.com/cursor/plugins --skill thermo-nuclear-code-quality-review</code>
+</div>
+</article>
+
+<!-- Bonus card -->
+<article class="skill-card fade-up" data-color="green" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+<div class="skill-card__icon" style="margin-bottom:1rem">&#128640;</div>
+<h3 style="margin-bottom:.5rem">Duos gagnants</h3>
+<p style="margin-bottom:0">Grill me + APEX = one-shot fiable. Impeccable + Make Interface Feel Better = UI premium.</p>
+</article>
+</div>
+</section>
+
+<!-- INSTALL -->
+<section class="section" id="install">
+<div class="section__head">
+<span class="section__tag">Installation</span>
+<h2 class="section__title">5 commandes, 2 minutes</h2>
+<p class="section__sub">Installez tous les skills depuis la racine de votre projet.</p>
+</div>
+<div class="install-block">
+<div class="install-steps">
+<div class="install-step">
+<div class="install-step__num">1</div>
+<div><code>npx skills@latest add mattpocock/skills --skill grill-me</code><div class="install-step__label">Grill me - Clarifier le besoin</div></div>
+</div>
+<div class="install-step">
+<div class="install-step__num">2</div>
+<div><code>npx skills@latest add melvynx/aiblueprint --skill apex</code><div class="install-step__label">APEX - Construire avec preuves</div></div>
+</div>
+<div class="install-step">
+<div class="install-step__num">3</div>
+<div><code>npx impeccable install</code><div class="install-step__label">Impeccable - Designer sans slop</div></div>
+</div>
+<div class="install-step">
+<div class="install-step__num">4</div>
+<div><code>npx skills add jakubkrehel/make-interfaces-feel-better</code><div class="install-step__label">Make Interface Feel Better - Polir les details</div></div>
+</div>
+<div class="install-step">
+<div class="install-step__num">5</div>
+<div><code>npx skills add https://github.com/cursor/plugins --skill thermo-nuclear-code-quality-review</code><div class="install-step__label">Thermo-Nuclear - Auditer avant livraison</div></div>
+</div>
+</div>
+</div>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+<div class="wrap">
+<div class="footer__inner">
+<div class="footer__copy">AI Coding Skills Guide - MIT License - Par Angelo Lock To Hang</div>
+<div class="footer__links">
+<a href="https://github.com/angelolockdev/ai-coding-skills-guide">GitHub</a>
+<a href="https://codelynx.dev/posts/meilleurs-skills-coder-avec-ia">Article</a>
+<a href="https://www.skills.sh/">skills.sh</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+// Scroll reveal animation
+var observer = new IntersectionObserver(function(entries) {
+entries.forEach(function(entry) {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+// Smooth nav background on scroll
+var navEl = document.querySelector('nav');
+window.addEventListener('scroll', function() {
+if (window.scrollY > 50) {
+navEl.style.borderColor = 'rgba(255,255,255,.14)';
+navEl.style.background = 'rgba(5,5,5,.8)';
+} else {
+navEl.style.borderColor = 'rgba(255,255,255,.08)';
+navEl.style.background = 'rgba(10,10,10,.6)';
+}
+}, { passive: true });
+</script>
+</body>
+</html>

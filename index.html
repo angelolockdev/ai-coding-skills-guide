@@ -33,9 +33,6 @@ nav .gh:hover{background:rgba(255,255,255,.1)}
 .btn--primary:hover{background:#34d399;transform:scale(.98)}
 .btn--ghost{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text)}
 .btn--ghost:hover{background:rgba(255,255,255,.08)}
-.btn .arrow{display:inline-flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;border-radius:999px;background:rgba(0,0,0,.1);transition:transform .4s var(--ease)}
-.btn--ghost .arrow{background:rgba(255,255,255,.08)}
-.btn:hover .arrow{transform:translate(2px,-1px) scale(1.05)}
 .hero__badge{display:flex;flex-direction:column;align-items:flex-end;gap:1.5rem}
 .hero__badge-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:1rem;padding:1.5rem;min-width:200px}
 .hero__badge-card .label{font-size:.6875rem;color:#525252;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
@@ -50,6 +47,35 @@ nav .gh:hover{background:rgba(255,255,255,.1)}
 .workflow{display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-bottom:4rem;padding:1rem 1.5rem;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:999px;width:fit-content;margin-left:auto;margin-right:auto}
 .workflow__step{font-size:.75rem;font-weight:600;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
 .workflow__sep{color:#525252;font-size:.75rem}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+@media(max-width:1024px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.skills-grid{grid-template-columns:1fr}}
+.skill-card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;overflow:hidden;transition:all .6s var(--ease)}
+.skill-card:hover{border-color:rgba(255,255,255,.14);transform:translateY(-2px)}
+.skill-card__num{font-family:var(--mono);font-size:.75rem;color:#525252;margin-bottom:1rem}
+.skill-card__icon{width:2.5rem;height:2.5rem;border-radius:.75rem;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1.5rem}
+.skill-card h3{font-size:1.25rem;font-weight:700;margin-bottom:.75rem;letter-spacing:-.02em}
+.skill-card p{color:var(--text-dim);font-size:.875rem;line-height:1.65;margin-bottom:1.25rem}
+.skill-card__tags{display:flex;flex-wrap:wrap;gap:.375rem}
+.skill-card__tag{font-family:var(--mono);font-size:.6875rem;padding:.25rem .625rem;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-dim)}
+.skill-card__install{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.skill-card__install code{font-family:var(--mono);font-size:.75rem;color:var(--accent);word-break:break-all;display:block;line-height:1.5}
+.install-block{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;margin-top:2rem}
+.install-block h3{font-size:1.125rem;font-weight:600;margin-bottom:1.5rem}
+.install-steps{display:flex;flex-direction:column;gap:1rem}
+.install-step{display:flex;align-items:flex-start;gap:1rem}
+.install-step__num{flex-shrink:0;width:1.75rem;height:1.75rem;border-radius:999px;background:var(--accent-soft);border:1px solid rgba(16,185,129,.2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.75rem;font-weight:600;color:var(--accent)}
+.install-step code{font-family:var(--mono);font-size:.8125rem;color:var(--text);background:rgba(255,255,255,.04);padding:.125rem .375rem;border-radius:.375rem}
+.install-step__label{font-size:.875rem;color:var(--text-dim);margin-top:.25rem}
+footer{padding:4rem 0 2rem;border-top:1px solid var(--border);margin-top:4rem}
+.footer__inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer__copy{font-size:.8125rem;color:#525252}
+.footer__links{display:flex;gap:1.5rem}
+.footer__links a{font-size:.8125rem;color:var(--text-dim);text-decoration:none;transition:color .3s var(--ease)}
+.footer__links a:hover{color:var(--text)}
+.fade-up{opacity:0;transform:translateY(2rem);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.fade-up{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -98,3 +124,131 @@ nav .gh:hover{background:rgba(255,255,255,.1)}
 <span class="workflow__step">Auditer</span>
 </div>
 </section>
+<section class="section" id="skills">
+<div class="section__head">
+<span class="section__tag">Les 5 skills</span>
+<h2 class="section__title">Chaque skill a un role precis</h2>
+<p class="section__sub">Ne demandez pas a l'agent de tout faire d'un coup. Donnez-lui un role, une procedure et des criteres verifiables.</p>
+</div>
+<div class="skills-grid">
+<article class="skill-card fade-up">
+<div class="skill-card__num">01</div>
+<div class="skill-card__icon">&#128293;</div>
+<h3>Grill me</h3>
+<p>Interroge l'utilisateur sans relache sur un plan ou un design avant de coder. Elimine les ambiguites produit pour viser le one-shot.</p>
+<div class="skill-card__tags">
+<span class="skill-card__tag">Clarifier</span>
+<span class="skill-card__tag">Spec</span>
+<span class="skill-card__tag">Acceptance</span>
+</div>
+<div class="skill-card__install"><code>npx skills@latest add mattpocock/skills --skill grill-me</code></div>
+</article>
+<article class="skill-card fade-up">
+<div class="skill-card__num">02</div>
+<div class="skill-card__icon">&#9881;</div>
+<h3>APEX</h3>
+<p>Analyze, Plan, Execute, Examine. L'agent teste son propre code et fournit des screenshots comme preuve de fonctionnement.</p>
+<div class="skill-card__tags">
+<span class="skill-card__tag">Implementer</span>
+<span class="skill-card__tag">Tester</span>
+<span class="skill-card__tag">Screenshot</span>
+</div>
+<div class="skill-card__install"><code>npx skills@latest add melvynx/aiblueprint --skill apex</code></div>
+</article>
+<article class="skill-card fade-up">
+<div class="skill-card__num">03</div>
+<div class="skill-card__icon">&#127912;</div>
+<h3>Impeccable</h3>
+<p>Corrige le slop visuel: typographie, contraste, responsive, espacements. 23 sous-skills qui rendent le design intentionnel.</p>
+<div class="skill-card__tags">
+<span class="skill-card__tag">Design</span>
+<span class="skill-card__tag">Responsive</span>
+<span class="skill-card__tag">No-slop</span>
+</div>
+<div class="skill-card__install"><code>npx impeccable install</code></div>
+</article>
+<article class="skill-card fade-up">
+<div class="skill-card__num">04</div>
+<div class="skill-card__icon">&#10024;</div>
+<h3>Make Interface Feel Better</h3>
+<p>Polir les details d'une interface deja fonctionnelle: alignements optiques, transitions, bordures, stabilite des nombres.</p>
+<div class="skill-card__tags">
+<span class="skill-card__tag">Polish</span>
+<span class="skill-card__tag">Micro-UX</span>
+<span class="skill-card__tag">Details</span>
+</div>
+<div class="skill-card__install"><code>npx skills add jakubkrehel/make-interfaces-feel-better</code></div>
+</article>
+<article class="skill-card fade-up">
+<div class="skill-card__num">05</div>
+<div class="skill-card__icon">&#9762;</div>
+<h3>Thermo-Nuclear Review</h3>
+<p>Audit sans pitie de la maintenabilite: code spaghetti, abstractions magiques, tests manquants, dette technique et architecture fragile.</p>
+<div class="skill-card__tags">
+<span class="skill-card__tag">Audit</span>
+<span class="skill-card__tag">Dette</span>
+<span class="skill-card__tag">Qualite</span>
+</div>
+<div class="skill-card__install"><code>npx skills add https://github.com/cursor/plugins --skill thermo-nuclear-code-quality-review</code></div>
+</article>
+<article class="skill-card fade-up" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+<div class="skill-card__icon" style="margin-bottom:1rem">&#128640;</div>
+<h3 style="margin-bottom:.5rem">Duos gagnants</h3>
+<p style="margin-bottom:0">Grill me + APEX = one-shot fiable. Impeccable + Make Interface Feel Better = UI premium.</p>
+</article>
+</div>
+</section>
+<section class="section" id="install">
+<div class="section__head">
+<span class="section__tag">Installation</span>
+<h2 class="section__title">5 commandes, 2 minutes</h2>
+<p class="section__sub">Installez tous les skills depuis la racine de votre projet.</p>
+</div>
+<div class="install-block">
+<div class="install-steps">
+<div class="install-step">
+<div class="install-step__num">1</div>
+<div><code>npx skills@latest add mattpocock/skills --skill grill-me</code><div class="install-step__label">Grill me - Clarifier le besoin</div></div>
+</div>
+<div class="install-step">
+<div class="install-step__num">2</div>
+<div><code>npx skills@latest add melvynx/aiblueprint --skill apex</code><div class="install-step__label">APEX - Construire avec preuves</div></div>
+</div>
+<div class="install-step">
+<div class="install-step__num">3</div>
+<div><code>npx impeccable install</code><div class="install-step__label">Impeccable - Designer sans slop</div></div>
+</div>
+<div class="install-step">
+<div class="install-step__num">4</div>
+<div><code>npx skills add jakubkrehel/make-interfaces-feel-better</code><div class="install-step__label">Make Interface Feel Better - Polir les details</div></div>
+</div>
+<div class="install-step">
+<div class="install-step__num">5</div>
+<div><code>npx skills add https://github.com/cursor/plugins --skill thermo-nuclear-code-quality-review</code><div class="install-step__label">Thermo-Nuclear - Auditer avant livraison</div></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<footer>
+<div class="wrap">
+<div class="footer__inner">
+<div class="footer__copy">AI Coding Skills Guide - MIT License - Par Angelo Lock To Hang</div>
+<div class="footer__links">
+<a href="https://github.com/angelolockdev/ai-coding-skills-guide">GitHub</a>
+<a href="https://codelynx.dev/posts/meilleurs-skills-coder-avec-ia">Article</a>
+<a href="https://www.skills.sh/">skills.sh</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+var observer = new IntersectionObserver(function(entries) {
+entries.forEach(function(entry) {
+if (entry.isIntersecting) entry.target.classList.add('visible');
+});
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+</script>
+</body>
+</html>

@@ -57,6 +57,10 @@ Les fichiers `SKILL.md` dans `skills/` peuvent etre copies directement dans le d
 
 Si votre agent ne supporte pas les commandes slash, utilisez les prompts universels dans `prompts/`.
 
+## Design Context
+
+Avant toute tache d'UI, lire `PRODUCT.md` (strategie : register, audience, positionnement, anti-references) et `DESIGN.md` (systeme visuel : palette, typographie, elevation, composants). Le design live se configure via `.impeccable/live/config.json`.
+
 ## Important
 
 > Ne demandez pas seulement a l'agent de faire propre. Donnez-lui un role, une procedure, des criteres verifiables, des limites claires et un format de rapport final.

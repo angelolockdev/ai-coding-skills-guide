@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-22T00:00:00Z",
+  "title": "Design System: AI Coding Skills Guide",
+  "extensions": {
+    "colorMeta": {
+      "ink-black": {
+        "role": "neutral",
+        "displayName": "Encre",
+        "canonical": "#050505",
+        "tonalRamp": ["#050505", "#0a0a0a", "#161616", "#262626", "#404040", "#525252", "#737373", "#a1a1a1"]
+      },
+      "surface-dark": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#0a0a0a",
+        "tonalRamp": ["#050505", "#0a0a0a", "#161616", "#262626", "#404040", "#525252", "#737373", "#a1a1a1"]
+      },
+      "accent-emerald": {
+        "role": "primary",
+        "displayName": "Émeraude Signal",
+        "canonical": "oklch(72% 0.19 155)",
+        "tonalRamp": ["#064e3b", "#065f46", "#047857", "#059669", "#10b981", "#34d399", "#6ee7b7", "#a7f3d0"]
+      },
+      "purple": {
+        "role": "tertiary",
+        "displayName": "Violet (non assigné)",
+        "canonical": "oklch(70% 0.14 290)",
+        "tonalRamp": ["#3b0764", "#5b21b6", "#7c3aed", "#8b5cf6", "#a78bfa", "#c4b5fd", "#ddd6fe", "#ede9fe"]
+      },
+      "blue": {
+        "role": "tertiary",
+        "displayName": "Bleu (non assigné)",
+        "canonical": "oklch(75% 0.13 250)",
+        "tonalRamp": ["#0c4a6e", "#075985", "#0369a1", "#0284c7", "#60a5fa", "#7dd3fc", "#bae6fd", "#e0f2fe"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "H1 du hero, une seule occurrence par page." },
+      "headline": { "displayName": "Headline", "purpose": "Titres de section H2." },
+      "title": { "displayName": "Title", "purpose": "Titres de cartes H3." },
+      "body": { "displayName": "Body", "purpose": "Paragraphe de lede, max 65-75ch." },
+      "body-small": { "displayName": "Body Small", "purpose": "Descriptions de cartes, corps secondaire." },
+      "label": { "displayName": "Label", "purpose": "Eyebrows, tags de section. Utiliser avec parcimonie." },
+      "mono": { "displayName": "Mono", "purpose": "Code d'installation, tags de skill, numéros." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.32, 0.72, 0, 1)", "purpose": "Easing par défaut pour toutes les transitions d'état et d'entrée." },
+      { "name": "duration-card", "value": "0.6s", "purpose": "Durée des transitions de carte (hover, reveal)." },
+      { "name": "duration-button", "value": "0.5s", "purpose": "Durée des transitions de bouton (hover)." },
+      { "name": "duration-nav", "value": "0.6s", "purpose": "Durée des transitions de navigation." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "CTA principal. Fond émeraude, texte encre, pilule complète.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#skills\">Voir les 5 skills</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.625rem; text-decoration: none; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; font-size: 0.875rem; border-radius: 999px; padding: 0.875rem 1.5rem; transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); cursor: pointer; border: none; background: #10b981; color: #050505; } .ds-btn-primary:hover { background: #34d399; transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 2px solid #10b981; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "CTA secondaire. Fond translucide, bordure subtile, texte primaire.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#install\">Installation rapide</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 0.625rem; text-decoration: none; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; font-size: 0.875rem; border-radius: 999px; padding: 0.875rem 1.5rem; transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); cursor: pointer; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #fafafa; } .ds-btn-ghost:hover { background: rgba(255,255,255,0.08); } .ds-btn-ghost:focus-visible { outline: 2px solid #10b981; outline-offset: 3px; }"
+    },
+    {
+      "name": "Skill Card",
+      "kind": "card",
+      "refersTo": "skill-card",
+      "description": "Carte de skill. Surface sombre, bordure subtile, hover relevé.",
+      "html": "<article class=\"ds-skill-card\"><div class=\"ds-skill-card__num\">01</div><h3>Grill me</h3><p>Interroge l'utilisateur sans relache sur un plan ou un design avant de coder.</p><div class=\"ds-skill-card__install\"><code>npx skills@latest add mattpocock/skills --skill grill-me</code></div></article>",
+      "css": ".ds-skill-card { position: relative; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08); border-radius: 1.5rem; padding: 2rem; overflow: hidden; transition: all 0.6s cubic-bezier(0.32, 0.72, 0, 1); } .ds-skill-card:hover { border-color: rgba(255,255,255,0.14); transform: translateY(-2px); } .ds-skill-card__num { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #525252; margin-bottom: 1rem; } .ds-skill-card h3 { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; color: #fafafa; margin-bottom: 0.75rem; } .ds-skill-card p { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #a1a1a1; font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem; } .ds-skill-card__install { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); } .ds-skill-card__install code { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #10b981; word-break: break-all; display: block; line-height: 1.5; }"
+    },
+    {
+      "name": "Chip Tag",
+      "kind": "chip",
+      "refersTo": "chip-tag",
+      "description": "Tag de skill. Mono, pilule, fond translucide.",
+      "html": "<span class=\"ds-chip-tag\">Clarifier</span>",
+      "css": ".ds-chip-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; padding: 0.25rem 0.625rem; border-radius: 999px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1a1; display: inline-block; }"
+    },
+    {
+      "name": "Floating Navigation",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Nav flottante en pilule, backdrop-blur, fixée en haut.",
+      "html": "<nav class=\"ds-nav\"><div class=\"ds-nav__brand\">AI Skills <span>/</span> Guide</div><div class=\"ds-nav__links\"><a href=\"#skills\">Skills</a><a href=\"#install\">Installation</a></div><a class=\"ds-nav__gh\" href=\"#\">GitHub</a></nav>",
+      "css": ".ds-nav { position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; align-items: center; gap: 2rem; background: rgba(10,10,10,0.6); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 0.6rem 1.5rem; transition: all 0.6s cubic-bezier(0.32, 0.72, 0, 1); } .ds-nav__brand { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 700; font-size: 0.875rem; color: #fafafa; white-space: nowrap; } .ds-nav__brand span { color: #10b981; } .ds-nav__links { display: flex; gap: 1.5rem; } .ds-nav__links a { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #a1a1a1; text-decoration: none; font-size: 0.8125rem; font-weight: 500; transition: color 0.3s cubic-bezier(0.32, 0.72, 0, 1); } .ds-nav__links a:hover { color: #fafafa; } .ds-nav__gh { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.8125rem; font-weight: 500; color: #fafafa; text-decoration: none; transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1); } .ds-nav__gh:hover { background: rgba(255,255,255,0.1); }"
+    },
+    {
+      "name": "Workflow Bar",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Barre de workflow en pilule horizontale, étapes en mono émeraude.",
+      "html": "<div class=\"ds-workflow\"><span class=\"ds-workflow__step\">Clarifier</span><span class=\"ds-workflow__sep\">→</span><span class=\"ds-workflow__step\">Construire</span><span class=\"ds-workflow__sep\">→</span><span class=\"ds-workflow__step\">Auditer</span></div>",
+      "css": ".ds-workflow { display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap; padding: 1rem 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; width: fit-content; } .ds-workflow__step { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; color: #10b981; text-transform: uppercase; } .ds-workflow__sep { color: #525252; font-size: 0.75rem; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "L'Atelier",
+    "overview": "Le système visuel évoque l'établi d'un développeur senior : un espace sombre, propre, où chaque outil a sa place et où la lumière tombe sur le travail, pas sur le décor. La profondeur vient des contrastes de surface et d'un glow radial subtil, jamais d'ombres portées. L'émeraude est le seul signal coloré — il marque l'action et la confiance, le reste est encre neutre.\n\nLe système rejette explicitement le SaaS générique 2023, la documentation austère, et le dev-tool dark cliché. L'Atelier n'est pas un terminal mocké — c'est un espace de travail réel, feutré, où le contenu porte la confiance.",
+    "keyCharacteristics": [
+      "Fond encre quasi-noir, surfaces légèrement relevées par contraste tonal.",
+      "Un seul accent saturé (émeraude) utilisé avec parcimonie sur les actions et signaux positifs.",
+      "Profondeur par glow radial et bordures fines, jamais par ombres portées.",
+      "Typographie en une seule famille sans-serif avec un mono pour le code et les tags.",
+      "Composants confiants et retenus : rayons généreux mais maîtrisés, pas de décoration superflue."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "L'émeraude est utilisé sur ≤10% de toute surface donnée. Sa rareté est le point.", "section": "colors" },
+      { "name": "The No-Warm-Neutral Rule", "body": "Le fond n'est jamais un gris teinté chaud. C'est un noir d'encre.", "section": "colors" },
+      { "name": "The One Family Rule", "body": "Une seule famille sans-serif pour tout le texte display + body. Le mono est le seul contraste de registre.", "section": "typography" },
+      { "name": "The Letter-Spacing Floor Rule", "body": "Le display ne descend jamais sous -0.04em de letter-spacing.", "section": "typography" },
+      { "name": "The No-Shadow Rule", "body": "Aucune ombre portée nulle part. La profondeur vient du contraste tonal et des bordures.", "section": "elevation" },
+      { "name": "The Glow-Is-Atmosphere Rule", "body": "Les glows radiaux créent l'ambiance, ne structurent pas l'information.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do garder l'émeraude sur ≤10% de la surface. C'est un signal, pas un décor.",
+      "Do utiliser le contraste tonal (#050505 vs #0a0a0a) pour la profondeur, jamais les ombres.",
+      "Do vérifier le contraste AA sur tout texte dim.",
+      "Do charger réellement Plus Jakarta Sans et JetBrains Mono via @font-face ou <link>.",
+      "Do respecter prefers-reduced-motion sur toutes les animations.",
+      "Do garder le letter-spacing du display ≥ -0.04em."
+    ],
+    "donts": [
+      "Don't utiliser background-clip: text avec un gradient. Remplacer par une couleur solide.",
+      "Don't mettre un eyebrow uppercase tracked au-dessus de chaque section.",
+      "Don't ajouter des ombres portées (box-shadow) sur les cartes ou boutons.",
+      "Don't dépasser 1.5rem (24px) de rayon sur les cartes.",
+      "Don't faire du glassmorphism décoratif. Le backdrop-blur est réservé à la navigation.",
+      "Don't utiliser les couleurs purple/blue/orange/red comme décor multi-couleur.",
+      "Don't reproduire le hero-métrique template (grand chiffre, petit label, gradient accent)."
+    ]
+  }
+}

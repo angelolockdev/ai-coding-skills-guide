@@ -3,41 +3,184 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Un guide pratique pour choisir et enchaîner cinq skills qui rendent le codage assisté par IA plus fiable, plus clair et plus soigné.">
+  <meta name="description" content="Un workflow français, vérifiable et prêt à installer pour coder avec les agents IA sans perdre le contrôle.">
   <meta property="og:title" content="AI Coding Skills Guide">
-  <meta property="og:description" content="Un workflow concret pour clarifier, construire, designer et auditer avec une IA.">
+  <meta property="og:description" content="5 skills pour coder avec l'IA sans perdre le contrôle.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://angelolockdev.github.io/ai-coding-skills-guide/">
-  <title>AI Coding Skills Guide - du brief au code vérifié</title>
-  <style>
-    :root{--ink:#0b1020;--muted:#5d6577;--line:#dfe3eb;--paper:#f8f7f3;--white:#fff;--mint:#19b983;--mint-deep:#087a57;--violet:#7257e8;--orange:#f58d52;--blue:#3478f6;--red:#e85555;--shadow:0 1px 2px rgba(14,24,48,.05),0 12px 32px rgba(14,24,48,.08);--r-xl:32px;--r-lg:22px;--r-md:16px;--font:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;line-height:1.5} a{color:inherit} h1,h2,h3{text-wrap:balance} p,.card__body,.tip p,.faq__content{text-wrap:pretty}.container{width:min(1160px,calc(100% - 40px));margin:auto}
-    .nav{position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(11,16,32,.08);background:rgba(248,247,243,.84);backdrop-filter:blur(16px)}.nav__in{height:72px;display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{font-size:14px;font-weight:800;letter-spacing:-.025em;text-decoration:none}.brand i{font-style:normal;color:var(--mint-deep)}.nav__links{display:flex;gap:24px;font-size:13px;color:var(--muted)}.nav__links a{text-decoration:none}.nav__links a:hover{color:var(--ink)}.nav__github{display:inline-grid;place-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-size:13px;font-weight:700;transition:background-color .18s ease,scale .18s ease}.nav__github:hover{background:#263052}.nav__github:active{scale:.96}
-    .hero{padding:92px 0 70px;overflow:hidden}.hero__grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:58px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mint-deep)}.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint)}h1{margin:20px 0;font-size:clamp(3.1rem,7vw,6.2rem);letter-spacing:-.075em;line-height:.93;max-width:800px}.hero h1 em{font-style:normal;color:var(--mint-deep)}.hero__lead{max-width:635px;margin:0;font-size:clamp(1.05rem,2vw,1.28rem);color:var(--muted)}.hero__actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.button{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 19px;border-radius:999px;font-size:14px;font-weight:800;text-decoration:none;transition:background-color .18s ease,color .18s ease,box-shadow .18s ease,scale .18s ease}.button:active{scale:.96}.button--primary{background:var(--mint);color:#072e23;box-shadow:0 8px 18px rgba(25,185,131,.2)}.button--primary:hover{background:#38d49f}.button--secondary{box-shadow:0 0 0 1px rgba(11,16,32,.15);color:var(--ink)}.button--secondary:hover{background:#fff}.hero__note{margin-top:18px;color:var(--muted);font-size:12px}.hero__panel{position:relative;padding:28px;background:var(--ink);border-radius:var(--r-xl);color:#fff;box-shadow:0 28px 50px rgba(11,16,32,.19)}.panel__label{font-family:var(--mono);font-size:11px;color:#aab5d0;text-transform:uppercase;letter-spacing:.1em}.panel__title{margin:14px 0 24px;font-size:26px;line-height:1.05;letter-spacing:-.04em}.flow{display:grid;gap:8px}.flow__item{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:12px;min-height:54px;padding:0 13px;background:rgba(255,255,255,.06);border-radius:13px;font-size:13px}.flow__n{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.12);font-family:var(--mono);font-size:11px}.flow__item strong{font-size:13px}.flow__item span{color:#b9c4de;font-size:12px}.flow__item:last-child{background:rgba(25,185,131,.15)}
-    .proof{padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.proof__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.proof__item{display:flex;gap:12px;align-items:center}.proof__number{font-size:29px;font-weight:850;letter-spacing:-.07em;font-variant-numeric:tabular-nums}.proof__item p{margin:0;color:var(--muted);font-size:12px;max-width:150px}
-    .section{padding:100px 0}.section--white{background:var(--white)}.section--dark{background:var(--ink);color:#fff}.section__kicker{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--mint-deep);text-transform:uppercase}.section--dark .section__kicker{color:#5ee1b4}.section__head{display:grid;grid-template-columns:.85fr 1fr;gap:42px;align-items:end;margin-bottom:42px}.section__head h2{margin:8px 0 0;font-size:clamp(2.2rem,4vw,3.65rem);line-height:.98;letter-spacing:-.06em}.section__head p{max-width:515px;margin:0;color:var(--muted);font-size:16px}.section--dark .section__head p{color:#b9c4de}
-    .skills{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}.skill{min-height:350px;padding:22px;border-radius:var(--r-lg);background:var(--white);box-shadow:0 0 0 1px var(--line);transition:transform .25s ease,box-shadow .25s ease}.skill:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.skill__top{display:flex;justify-content:space-between;align-items:center}.skill__number{font-family:var(--mono);font-size:11px;color:var(--muted)}.skill__dot{width:12px;height:12px;border-radius:50%}.skill:nth-child(1) .skill__dot{background:var(--mint)}.skill:nth-child(2) .skill__dot{background:var(--violet)}.skill:nth-child(3) .skill__dot{background:var(--orange)}.skill:nth-child(4) .skill__dot{background:var(--blue)}.skill:nth-child(5) .skill__dot{background:var(--red)}.skill h3{margin:50px 0 12px;font-size:20px;line-height:1.04;letter-spacing:-.04em}.skill p{margin:0;color:var(--muted);font-size:13px}.skill__when{margin-top:26px;padding-top:15px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}.skill__when strong{display:block;margin-top:4px;color:var(--ink);font-size:12px}.skill code{display:block;margin-top:12px;padding:9px;border-radius:9px;background:#f3f4f7;color:#34405c;font-family:var(--mono);font-size:9px;line-height:1.35;overflow-wrap:anywhere}
-    .tips{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.tip{padding:24px;border-radius:var(--r-lg);background:rgba(255,255,255,.06);box-shadow:0 0 0 1px rgba(255,255,255,.1)}.tip__icon{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:rgba(94,225,180,.14);color:#5ee1b4;font-family:var(--mono);font-size:14px}.tip h3{margin:34px 0 9px;font-size:18px;letter-spacing:-.03em}.tip p{margin:0;color:#bdc8e3;font-size:13px}.tip code{color:#7deac1;font-family:var(--mono);font-size:11px}
-    .path{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.path__step{padding:23px;background:#fff;border-radius:var(--r-lg);box-shadow:0 0 0 1px var(--line)}.path__n{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--mono);font-size:11px}.path__step h3{margin:42px 0 8px;font-size:17px;letter-spacing:-.035em}.path__step p{margin:0;font-size:13px;color:var(--muted)}.path__step code{display:block;margin-top:15px;color:var(--mint-deep);font-family:var(--mono);font-size:10px;overflow-wrap:anywhere}
-    .decision{display:grid;grid-template-columns:1fr 1fr;gap:18px}.decision__item{display:flex;gap:20px;align-items:flex-start;padding:22px 0;border-top:1px solid rgba(255,255,255,.17)}.decision__label{flex:0 0 112px;font-family:var(--mono);font-size:10px;color:#5ee1b4;text-transform:uppercase;letter-spacing:.08em}.decision__item h3{margin:0 0 6px;font-size:17px;letter-spacing:-.03em}.decision__item p{margin:0;color:#bdc8e3;font-size:13px}
-    .faq{display:grid;grid-template-columns:1fr 1fr;gap:13px}.faq details{padding:20px 22px;border-radius:var(--r-md);background:#fff;box-shadow:0 0 0 1px var(--line)}.faq summary{cursor:pointer;font-weight:800;font-size:14px;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";float:right;color:var(--mint-deep);font-size:20px;font-weight:400;line-height:14px}.faq details[open] summary:after{content:"−"}.faq__content{margin:13px 0 0;color:var(--muted);font-size:13px}
-    .cta{padding:75px 0}.cta__box{padding:clamp(30px,6vw,70px);border-radius:var(--r-xl);background:linear-gradient(135deg,#d8f8ea,#f2eee6 55%,#e6e3ff);text-align:center}.cta h2{max-width:730px;margin:0 auto;font-size:clamp(2.4rem,5vw,4.8rem);line-height:.95;letter-spacing:-.07em}.cta p{max-width:540px;margin:20px auto 28px;color:#46506b}.footer{padding:28px 0 42px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.footer__in{display:flex;justify-content:space-between;gap:16px}.footer a{color:var(--ink)}
-    @media(max-width:960px){.hero__grid,.section__head{grid-template-columns:1fr}.hero__panel{max-width:580px}.skills{grid-template-columns:repeat(3,1fr)}.path{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.nav__links{display:none}.hero{padding:62px 0 52px}.section{padding:68px 0}.proof__grid{grid-template-columns:1fr;gap:12px}.skills,.tips,.path,.decision,.faq{grid-template-columns:1fr}.skill{min-height:auto}.skill h3{margin-top:35px}.hero__panel{padding:22px}.footer__in{display:block}.footer__in p{margin:0 0 8px}}
-    @keyframes reveal-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}.reveal{opacity:1;transform:none}.reveal.is-visible{animation:reveal-in .55s cubic-bezier(.16,1,.3,1) both}.reveal--delay-1{animation-delay:.08s}.reveal--delay-2{animation-delay:.16s}.discovery{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}.discovery__feature{padding:30px;border-radius:var(--r-lg);background:linear-gradient(145deg,#e9f8f2,#f5f7fc);box-shadow:0 0 0 1px var(--line)}.discovery__feature h3{margin:0 0 10px;font-size:28px;letter-spacing:-.05em;line-height:1}.discovery__feature p{margin:0;color:var(--muted);font-size:14px}.discovery__list{display:grid;gap:1px;background:var(--line);box-shadow:0 0 0 1px var(--line);border-radius:var(--r-lg);overflow:hidden}.discovery__item{padding:17px 20px;background:var(--white)}.discovery__item strong{display:block;font-size:14px}.discovery__item span{display:block;margin-top:4px;color:var(--muted);font-size:12px}@media(max-width:760px){.discovery{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-  </style>
+  <title>AI Coding Skills Guide - 5 skills, un workflow fiable</title>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="nav"><div class="container nav__in"><a class="brand" href="#top">AI Skills <i>/</i> Guide</a><nav class="nav__links" aria-label="Navigation"><a href="#skills">Les 5 skills</a><a href="#tips">Astuces</a><a href="#workflow">Workflow</a><a href="#faq">FAQ</a></nav><a class="nav__github" href="https://github.com/angelolockdev/ai-coding-skills-guide">Voir le repo ↗</a></div></header>
-  <main id="top">
-    <section class="hero"><div class="container hero__grid"><div><span class="eyebrow">Le guide opérationnel</span><h1>Moins de <em>hasard.</em><br>Plus de code qui tient.</h1><p class="hero__lead">Cinq skills, un enchaînement clair et des astuces applicables tout de suite pour transformer une demande IA vague en livraison vérifiée, lisible et maintenable.</p><div class="hero__actions"><a class="button button--primary" href="#workflow">Démarrer le workflow <span>↓</span></a><a class="button button--secondary" href="#tips">Voir les astuces</a></div><p class="hero__note">Pour Claude Code, Cursor, Codex, Copilot, Gemini CLI, Hermes et tout agent lisant des fichiers SKILL.md.</p></div><aside class="hero__panel"><div class="panel__label">Le bon ordre compte</div><h2 class="panel__title">Du contexte vers une preuve, pas l'inverse.</h2><div class="flow"><div class="flow__item"><b class="flow__n">01</b><strong>Clarifier</strong><span>Grill me</span></div><div class="flow__item"><b class="flow__n">02</b><strong>Construire</strong><span>APEX</span></div><div class="flow__item"><b class="flow__n">03</b><strong>Designer</strong><span>Impeccable</span></div><div class="flow__item"><b class="flow__n">04</b><strong>Polir</strong><span>Interface Feel Better</span></div><div class="flow__item"><b class="flow__n">05</b><strong>Auditer</strong><span>Thermo-Nuclear</span></div></div></aside></div></section>
-    <section class="proof"><div class="container proof__grid"><div class="proof__item"><strong class="proof__number">5</strong><p>skills complémentaires, pas interchangeables</p></div><div class="proof__item"><strong class="proof__number">7</strong><p>étapes, du besoin flou à la livraison</p></div><div class="proof__item"><strong class="proof__number">0</strong><p>raison de livrer sans test ni revue</p></div></div></section>
-    <section class="section section--white" id="skills"><div class="container"><header class="section__head"><div><span class="section__kicker">01 - Le kit</span><h2>Chaque skill a un rôle précis.</h2></div><p>Le piège n'est pas de manquer d'outils. C'est de demander à un seul prompt de définir le besoin, produire le code, juger le design et valider le résultat.</p></header><div class="skills"><article class="skill"><div class="skill__top"><span class="skill__number">01</span><i class="skill__dot"></i></div><h3>Grill me</h3><p>Force les décisions produit avant la première ligne de code.</p><div class="skill__when">À utiliser quand<strong>Le besoin est vague, coûteux ou irréversible.</strong></div><code>npx skills@latest add mattpocock/skills --skill grill-me</code></article><article class="skill"><div class="skill__top"><span class="skill__number">02</span><i class="skill__dot"></i></div><h3>APEX</h3><p>Analyse, planifie, exécute et examine avec une preuve finale.</p><div class="skill__when">À utiliser quand<strong>La fonctionnalité est nette et doit être testée.</strong></div><code>npx skills@latest add melvynx/aiblueprint --skill apex</code></article><article class="skill"><div class="skill__top"><span class="skill__number">03</span><i class="skill__dot"></i></div><h3>Impeccable</h3><p>Donne une direction visuelle intentionnelle aux écrans trop génériques.</p><div class="skill__when">À utiliser quand<strong>L'UI fonctionne, mais ne dit rien du produit.</strong></div><code>npx impeccable install</code></article><article class="skill"><div class="skill__top"><span class="skill__number">04</span><i class="skill__dot"></i></div><h3>Feel Better</h3><p>Corrige les détails qui séparent une UI correcte d'une UI soignée.</p><div class="skill__when">À utiliser quand<strong>Il reste des frictions de rythme, contraste ou interaction.</strong></div><code>npx skills add jakubkrehel/make-interfaces-feel-better</code></article><article class="skill"><div class="skill__top"><span class="skill__number">05</span><i class="skill__dot"></i></div><h3>Thermo-Nuclear</h3><p>Met le code sous pression avant qu'il ne parte en production.</p><div class="skill__when">À utiliser quand<strong>Il faut évaluer dette, sécurité et maintenabilité.</strong></div><code>npx skills add https://github.com/cursor/plugins --skill thermo-nuclear-code-quality-review</code></article></div></div></section>
-    <section class="section section--dark" id="tips"><div class="container"><header class="section__head"><div><span class="section__kicker">02 - Astuces concrètes</span><h2>Les détails qui augmentent vraiment le niveau.</h2></div><p>Ces règles réduisent les faux départs, évitent le code jetable et font de l'IA un partenaire de production plutôt qu'une machine à générer des hypothèses.</p></header><div class="tips"><article class="tip"><div class="tip__icon">01</div><h3>Verrouillez le “done”</h3><p>Avant toute implémentation, faites écrire à l'agent les critères observables : état vide, erreur, mobile, accessibilité, test et preuve attendue.</p></article><article class="tip"><div class="tip__icon">02</div><h3>Un écran, une intention</h3><p>Commencez une itération UI avec une phrase : “Cette page doit faire ressentir / permettre…”. Impeccable aura une direction, pas un vide à remplir.</p></article><article class="tip"><div class="tip__icon">03</div><h3>Demandez les preuves</h3><p>Un “c'est fait” ne suffit pas. Demandez les commandes exécutées, leur sortie utile, les scénarios testés et, pour une UI, une capture.</p></article><article class="tip"><div class="tip__icon">04</div><h3>Réduisez le rayon d'action</h3><p>Donnez une tâche verticalisée. Mieux vaut une petite tranche utilisable qu'une refonte “globale” qui mélange architecture, design et dette.</p></article><article class="tip"><div class="tip__icon">05</div><h3>Conservez les décisions</h3><p>Faites résumer les hypothèses et arbitrages dans <code>AGENTS.md</code>, une spec ou le PR. Le prochain agent ne devra pas les réinventer.</p></article><article class="tip"><div class="tip__icon">06</div><h3>Auditez à froid</h3><p>Le générateur ne doit pas être son unique juge. Terminez par une revue séparée, agressive sur les cas limites, les simplifications et les secrets.</p></article></div></div></section>
-    <section class="section" id="workflow"><div class="container"><header class="section__head"><div><span class="section__kicker">03 - Le chemin recommandé</span><h2>Un workflow qui ne saute pas d'étape.</h2></div><p>Chaque phase produit un artefact vérifiable. La phase suivante ne doit jamais dépendre d'une supposition de l'agent précédent.</p></header><div class="path"><article class="path__step"><b class="path__n">01</b><h3>Clarifier</h3><p>Contraintez le problème : utilisateurs, non-objectifs, risques et critères d'acceptation.</p><code>/grill-me</code></article><article class="path__step"><b class="path__n">02</b><h3>Spécifier & construire</h3><p>Découpez en tâches petites, implémentez, testez les chemins nominal et erreur.</p><code>/apex</code></article><article class="path__step"><b class="path__n">03</b><h3>Designer & polir</h3><p>Installez une direction, puis réglez hiérarchie, surfaces, micro-interactions et responsive.</p><code>/impeccable → /make-interfaces-feel-better</code></article><article class="path__step"><b class="path__n">04</b><h3>Auditer & livrer</h3><p>Recherchez la dette, les failles, les abstractions opaques et les lacunes de tests.</p><code>/thermo-nuclear-code-quality-review</code></article></div></div></section>
-    <section class="section section--dark"><div class="container"><header class="section__head"><div><span class="section__kicker">04 - Décider vite</span><h2>Quel skill appeler maintenant ?</h2></div><p>Choisissez le skill qui traite l'incertitude actuelle, pas celui qui paraît le plus complet.</p></header><div class="decision"><article class="decision__item"><span class="decision__label">Besoin flou</span><div><h3>Grill me</h3><p>Quand les options produit ne sont pas encore tranchées, et que coder maintenant créerait du rework.</p></div></article><article class="decision__item"><span class="decision__label">Risque livraison</span><div><h3>APEX</h3><p>Quand il faut une implémentation pilotée par plan, test et preuve de comportement.</p></div></article><article class="decision__item"><span class="decision__label">UI générique</span><div><h3>Impeccable</h3><p>Quand la page est fonctionnelle mais manque de hiérarchie, d'identité et de rythme.</p></div></article><article class="decision__item"><span class="decision__label">UI presque prête</span><div><h3>Make Interface Feel Better</h3><p>Quand la qualité dépend de détails : espacements, transitions, alignements, zones tactiles.</p></div></article><article class="decision__item"><span class="decision__label">Dette & sécurité</span><div><h3>Thermo-Nuclear</h3><p>Quand le changement doit être durable, compréhensible par une équipe et sûr à déployer.</p></div></article><article class="decision__item"><span class="decision__label">Tâche minuscule</span><div><h3>Ne surchargez pas</h3><p>Pour une correction locale évidente, lisez, corrigez, testez. Les skills sont des garde-fous, pas du cérémonial.</p></div></article></div></div></section>
-    <section class="section section--white" id="discover"><div class="container"><div class="discovery"><article class="discovery__feature reveal"><p class="section__kicker">Pour aller plus loin</p><h3>Des skills utiles, sélectionnés par usage.</h3><p>Au-delà des cinq fondations, privilégiez les skills qui réduisent une incertitude réelle : recherche primaire, transmission de contexte, validation front-end ou revue indépendante.</p></article><div class="discovery__list reveal reveal--delay-1"><div class="discovery__item"><strong>Matt Pocock - research</strong><span>Recherche sourcée dans les documents et sources primaires avant une décision technique.</span></div><div class="discovery__item"><strong>Matt Pocock - handoff</strong><span>Condense une session complexe pour qu'un autre agent reprenne sans perdre les décisions.</span></div><div class="discovery__item"><strong>Matt Pocock - setup-matt-pocock-skills</strong><span>Prépare les conventions du repo et les documents agents avant d'industrialiser le workflow.</span></div><div class="discovery__item"><strong>skills.sh - frontend-design, agent-browser, vercel-react-best-practices</strong><span>Un trio utile pour concevoir, vérifier visuellement et optimiser une interface React moderne.</span></div><div class="discovery__item"><strong>skills.sh - requesting-code-review, design-taste-frontend</strong><span>Pour déclencher une revue sérieuse et éviter les interfaces génériques ou purement décoratives.</span></div></div></div></div></section><section class="section section--white" id="faq"><div class="container"><header class="section__head"><div><span class="section__kicker">05 - FAQ</span><h2>Les questions à se poser avant de lancer un agent.</h2></div><p>Une bonne demande donne du contexte, des contraintes et une définition claire de ce qui doit être vérifié.</p></header><div class="faq"><details><summary>Faut-il installer les cinq skills ?</summary><p class="faq__content">Oui si vous voulez le workflow complet. Sinon, commencez par Grill me et APEX : ils éliminent beaucoup de rework avant même la question visuelle.</p></details><details><summary>Est-ce que cela remplace une revue humaine ?</summary><p class="faq__content">Non. Ces skills structurent et renforcent la revue. Toute modification sensible, publication ou action externe garde une validation humaine.</p></details><details><summary>Quel prompt donne les meilleurs résultats ?</summary><p class="faq__content">Un prompt qui indique le but, le périmètre, les contraintes, les fichiers pertinents, le résultat attendu et comment le vérifier.</p></details><details><summary>Pourquoi séparer Impeccable et Feel Better ?</summary><p class="faq__content">Impeccable définit l'intention et le système visuel. Feel Better améliore les détails d'exécution : surfaces, ergonomie, motion et stabilité.</p></details></div></div></section>
-    <section class="cta"><div class="container"><div class="cta__box"><h2>Ne demandez plus à l'IA de “faire une app”.</h2><p>Donnez-lui une étape précise, un niveau d'exigence et la preuve à produire. Le résultat devient plus rapide à relire, plus simple à maintenir et plus fiable à livrer.</p><a class="button button--primary" href="https://github.com/angelolockdev/ai-coding-skills-guide">Ouvrir le guide sur GitHub ↗</a></div></div></section>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <div class="nav-wrap">
+    <header class="nav">
+      <a class="brand" href="#top">AI Skills <span>/</span> Guide</a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#skills">Les skills</a>
+        <a href="#workflow">Le workflow</a>
+        <a href="#install">Installer</a>
+      </nav>
+      <a class="nav-action" href="https://github.com/angelolockdev/ai-coding-skills-guide">Voir le repo</a>
+    </header>
+  </div>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal is-visible">
+          <p class="kicker">Le guide opérationnel</p>
+          <h1>Coder avec l'IA <strong>sans perdre le contrôle.</strong></h1>
+          <p class="hero-lede">Cinq skills et un ordre de travail clair pour passer d'une demande floue à un code vérifié, lisible et maintenable.</p>
+          <div class="hero-actions">
+            <a class="button-primary" href="#install">Installer les skills</a>
+            <a class="button-secondary" href="#workflow">Voir le workflow</a>
+          </div>
+        </div>
+
+        <div class="hero-art reveal is-visible">
+          <img class="hero-photo" src="https://picsum.photos/seed/ai-coding-workbench/1200/1500" width="1200" height="1500" alt="Espace de travail de développement sobre et contrasté" fetchpriority="high">
+          <aside class="glass-workflow" aria-label="Les cinq phases du workflow">
+            <p class="kicker">L'ordre compte</p>
+            <h2>Du contexte vers une preuve.</h2>
+            <div class="flow-step"><b>01</b><strong>Clarifier</strong><span>Grill me</span></div>
+            <div class="flow-step"><b>02</b><strong>Construire</strong><span>APEX</span></div>
+            <div class="flow-step"><b>03</b><strong>Designer</strong><span>Impeccable</span></div>
+            <div class="flow-step"><b>04</b><strong>Polir</strong><span>Feel Better</span></div>
+            <div class="flow-step"><b>05</b><strong>Auditer</strong><span>Thermo-Nuclear</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof" aria-label="Repères du guide">
+      <div class="container proof-grid">
+        <div class="proof-item reveal"><strong>5</strong><p>skills complémentaires, chacun avec une responsabilité nette.</p></div>
+        <div class="proof-item reveal"><strong>7</strong><p>étapes qui gardent le besoin, le code et la preuve alignés.</p></div>
+        <div class="proof-item reveal"><strong>0</strong><p>raison de livrer sans test ni revue indépendante.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <header class="section-heading reveal">
+          <p class="kicker">Les compétences de base</p>
+          <h2>Chaque skill traite une incertitude précise.</h2>
+          <p>Ils ne remplacent pas le jugement. Ils évitent de confondre la découverte, l'exécution, le design et l'audit dans une seule instruction.</p>
+        </header>
+
+        <div class="bento">
+          <article class="bento-card bento-card--lead reveal">
+            <img src="https://picsum.photos/seed/developer-review-notes/1200/1200" width="1200" height="1200" alt="Notes de travail et matériel de développement">
+            <h3>Le workflow avant les outils.</h3>
+            <p>Une méthode rend le travail d'un agent visible, discutable et vérifiable.</p>
+          </article>
+          <article class="bento-card bento-card--signal reveal">
+            <h3>Grill me</h3>
+            <p>Clarifie les décisions produit avant de créer du code coûteux à corriger.</p>
+          </article>
+          <article class="bento-card bento-card--code reveal">
+            <h3>APEX</h3>
+            <p>Planifie, exécute, teste et examine une tranche de travail.</p>
+            <code class="code-line">npx skills@latest add melvynx/aiblueprint --skill apex</code>
+          </article>
+          <article class="bento-card bento-card--guide reveal">
+            <h3>Impeccable</h3>
+            <p>Donne une direction visuelle cohérente quand l'interface fonctionne mais reste générique.</p>
+          </article>
+          <article class="bento-card bento-card--code reveal">
+            <h3>Feel Better et Thermo-Nuclear</h3>
+            <p>Polissent l'interface et vérifient que le code reste lisible, direct et durable.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section story" id="workflow">
+      <div class="container">
+        <div class="story-intro reveal">
+          <p class="kicker">Le parcours de travail</p>
+          <h2>Le site se lit comme le travail avance.</h2>
+          <p>Le défilement suit le chemin réel d'une tâche. Chaque étape prépare une décision ou une preuve utile à la suivante.</p>
+        </div>
+
+        <div class="story-track">
+          <div class="story-rail">
+            <h2>Ne sautez pas la partie qui évite le rework.</h2>
+            <p>Les cartes se révèlent dans l'ordre où elles deviennent nécessaires. Sur mobile, elles restent visibles dans une lecture linéaire.</p>
+          </div>
+
+          <div class="story-steps">
+            <article class="story-card">
+              <h3>Clarifier le problème.</h3>
+              <p>Avant d'ouvrir un fichier, rendez les ambiguïtés visibles. Le but, les contraintes et les non-objectifs deviennent des critères vérifiables.</p>
+              <ul>
+                <li>Audience et résultat attendu<span>Ce que le changement doit réellement produire.</span></li>
+                <li>Limites et risques<span>Ce qui ne doit pas bouger sans validation.</span></li>
+              </ul>
+            </article>
+            <article class="story-card">
+              <h3>Construire une tranche prouvable.</h3>
+              <p>APEX transforme la demande en plan, puis en une implémentation testée. Le résultat utile est une preuve, pas une promesse.</p>
+              <ul>
+                <li>Plan fichier par fichier<span>Le périmètre est petit et les dépendances sont visibles.</span></li>
+                <li>Validation réelle<span>Tests, build et comportement vérifié sur la surface utilisateur.</span></li>
+              </ul>
+            </article>
+            <article class="story-card">
+              <h3>Designer puis auditer.</h3>
+              <p>Le design vient après la validation fonctionnelle. La revue finale cherche les dettes structurelles qui rendent une solution fragile.</p>
+              <ul>
+                <li>Direction avant décoration<span>Hiérarchie, accessibilité et interactions ont une raison précise.</span></li>
+                <li>Revue indépendante<span>Le générateur ne doit pas être son propre juge.</span></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="install">
+      <div class="container install-shell reveal">
+        <div class="install-copy">
+          <p class="kicker">Prêt à installer</p>
+          <h2>Copiez les commandes. Gardez la méthode.</h2>
+          <p>Commencez avec les cinq fondations. Les fichiers de ce dépôt vous donnent aussi les prompts et documents à réutiliser dans un autre projet.</p>
+        </div>
+        <div class="commands" aria-label="Commandes d'installation">
+          <div class="command"><code>npx skills@latest add mattpocock/skills --skill grill-me</code><button class="copy-button" type="button" data-copy>Copier</button></div>
+          <div class="command"><code>npx skills@latest add melvynx/aiblueprint --skill apex</code><button class="copy-button" type="button" data-copy>Copier</button></div>
+          <div class="command"><code>npx impeccable install</code><button class="copy-button" type="button" data-copy>Copier</button></div>
+          <div class="command"><code>npx skills add jakubkrehel/make-interfaces-feel-better</code><button class="copy-button" type="button" data-copy>Copier</button></div>
+          <div class="command"><code>npx skills add https://github.com/cursor/plugins --skill thermo-nuclear-code-quality-review</code><button class="copy-button" type="button" data-copy>Copier</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <header class="section-heading reveal">
+          <h2>Questions utiles avant de lancer un agent.</h2>
+          <p>Le guide est conçu pour réduire les faux départs sans transformer chaque petite correction en cérémonial.</p>
+        </header>
+        <div class="faq">
+          <details class="reveal"><summary>Faut-il installer les cinq skills ?</summary><p>Oui pour le workflow complet. Pour une première amélioration, commencez par Grill me et APEX.</p></details>
+          <details class="reveal"><summary>Est-ce que cela remplace une revue humaine ?</summary><p>Non. Les skills rendent la revue plus structurée. Les changements sensibles gardent une validation humaine.</p></details>
+          <details class="reveal"><summary>Quel prompt donne de bons résultats ?</summary><p>Un prompt qui indique le but, le périmètre, les contraintes, le résultat attendu et la manière de le vérifier.</p></details>
+          <details class="reveal"><summary>Pourquoi séparer design et finition ?</summary><p>Impeccable choisit une direction. Feel Better améliore l'exécution : surfaces, rythme, retours tactiles et stabilité.</p></details>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer class="footer"><div class="container footer__in"><p>AI Coding Skills Guide · MIT License · Par Angelo Lock To Hang</p><p><a href="https://codelynx.dev/posts/meilleurs-skills-coder-avec-ia">Article source</a> · <a href="https://www.skills.sh/">skills.sh</a></p></div></footer>
-<script>const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;const observer=!reduceMotion&&'IntersectionObserver' in window?new IntersectionObserver((entries)=>entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.15}):null;document.querySelectorAll('.section,.skill,.tip,.path__step,.decision__item,.faq details,.discovery__feature,.discovery__list').forEach((element,index)=>{element.classList.add('reveal');if(index%3===1)element.classList.add('reveal--delay-1');if(index%3===2)element.classList.add('reveal--delay-2');if(observer)observer.observe(element);else element.classList.add('is-visible')});</script></body>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>AI Coding Skills Guide. MIT License. Par Angelo Lock To Hang.</p>
+      <p><a href="https://codelynx.dev/posts/meilleurs-skills-coder-avec-ia">Article source</a> · <a href="https://www.skills.sh/">skills.sh</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/site.js"></script>
+</body>
 </html>
